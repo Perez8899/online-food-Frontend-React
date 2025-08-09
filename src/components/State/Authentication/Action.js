@@ -126,11 +126,21 @@ export const getUser = (token) => {
   };
 
 //Method Logout
-  export const logout = () => {
-    return async (dispatch) => {
-      dispatch({ type: LOGOUT });
-      localStorage.clear();
-    };
+ // actions/authActions.js (o donde esté tu logout)
+export const logout = () => {
+  return async (dispatch) => {
+    // ✅ Bandera para evitar toast de "no has iniciado sesión"
+    localStorage.setItem("loggedOut", "true");
+
+    // ✅ Remover token u otros datos
+    localStorage.removeItem("jwt");
+
+    // ✅ Limpiar Redux state
+    dispatch({ type: LOGOUT });
+
+    // ✅ Puedes limpiar otros slices si los tienes (carrito, perfil, etc.)
   };
+};
+
 
  

@@ -26,29 +26,29 @@ const validationSchema = Yup.object().shape({
     .required('Selecciona un tipo de cocina'),
 
   streetAddress: Yup.string()
-  .trim()
+    .trim()
     .required('La dirección es obligatoria')
     .min(5, 'La dirección debe tener al menos 5 caracteres'),
 
   city: Yup.string()
-  .trim()
+    .trim()
     .required('La ciudad es obligatoria'),
 
   stateProvince: Yup.string()
-  .trim()
+    .trim()
     .required('El estado/provincia es obligatorio'),
 
   postalCode: Yup.string()
-  .trim()
+    .trim()
     .required('El código postal es obligatorio')
     .matches(/^[0-9]+$/, 'El código postal solo debe contener números'),
 
   country: Yup.string()
-  .trim()
+    .trim()
     .required('El país es obligatorio'),
 
   openingHours: Yup.string()
-  .trim()
+    .trim()
     .required('Los horarios de apertura son obligatorios')
     .matches(
       /^(Mon|Tue|Wed|Thu|Fri|Sat|Sun)(-(Mon|Tue|Wed|Thu|Fri|Sat|Sun))?: \d{1,2}:\d{2} (AM|PM) - \d{1,2}:\d{2} (AM|PM)$/,
@@ -56,33 +56,31 @@ const validationSchema = Yup.object().shape({
     ),
 
   email: Yup.string()
-  .trim()
+    .trim()
     .email('Ingresa un email válido')
     .required('El email es obligatorio'),
 
   mobile: Yup.string()
-  .trim()
+    .trim()
     .required('El teléfono móvil es obligatorio')
     .matches(/^[0-9]+$/, 'El teléfono solo debe contener números')
     .min(8, 'El teléfono debe tener al menos 8 dígitos'),
 
   twitter: Yup.string()
   .trim()
-    .url('Ingresa una URL válida de Twitter')
-    .nullable()
-    .matches(
-      /^(https?:\/\/)?(www\.)?twitter\.com\/[A-Za-z0-9_]{1,15}$/,
-      'Ingresa una URL válida de Twitter (ej: https://twitter.com/usuario)'
-    ),
+  .test('twitter', 'URL de Twitter inválida', (value) => 
+    !value || // Si está vacío, pasa la validación
+    /^(https?:\/\/)?(www\.)?twitter\.com\/[A-Za-z0-9_]{1,15}$/.test(value)
+  )
+  .nullable(),
 
-  instagram: Yup.string()
-    .url('Ingresa una URL válida de Instagram')
-    .nullable()
-    .matches(
-      /^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9_]{1,30}$/,
-      'Ingresa una URL válida de Instagram (ej: https://instagram.com/usuario)'
-    ),
-
+instagram: Yup.string()
+  .trim()
+  .test('instagram', 'URL de Instagram inválida', (value) => 
+    !value || // Si está vacío, pasa la validación
+    /^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9_]{1,30}$/.test(value)
+  )
+  .nullable(),
   images: Yup.array()
     .min(1, 'Debes subir al menos una imagen del restaurante')
     .max(4, 'No puedes subir más de 4 imágenes')
@@ -99,8 +97,8 @@ const initialValues = {
   country: "",
   email: "",
   mobile: "",
-  twitter: "",
-  instagram: "",
+  twitter: null,
+  instagram: null,
   openingHours: "Mon-Sun: 10:00 AM - 10:00 PM",
   images: [],
 };
@@ -405,7 +403,7 @@ const CreaterRestaurantForm = () => {
                 fullWidth
                 id="twitter"
                 name="twitter"
-                label="Twitter X"
+                label="Twitter (opcional)"
                 variant="outlined"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -421,7 +419,7 @@ const CreaterRestaurantForm = () => {
                 fullWidth
                 id="instagram"
                 name="instagram"
-                label="Instagram"
+                label="Instagram (opcional)"
                 variant="outlined"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -433,20 +431,22 @@ const CreaterRestaurantForm = () => {
               />
             </Grid>
             {/* ---------------------------------------------------------------------*/}
+            <Grid item size={8}>
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                fullWidth
+                size="large"
+                disabled={!formik.isValid || formik.isSubmitting}
+              >
+                {formik.isSubmitting ? <CircularProgress size={24} /> : 'Crear Restaurante'}
+              </Button>
+            </Grid>
+
           </Grid>
 
-          <Grid item size={12}>
-            <Button
-              variant="contained"
-              color="primary"
-              type="submit"
-              fullWidth
-              size="large"
-              disabled={!formik.isValid || formik.isSubmitting}
-            >
-              {formik.isSubmitting ? <CircularProgress size={24} /> : 'Crear Restaurante'}
-            </Button>
-          </Grid>
+
         </form>
 
       </div>

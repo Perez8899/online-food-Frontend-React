@@ -11,9 +11,16 @@ import Routers from './Routers/Routers';
 import { getRestaurantByUserId } from './components/State/Restaurant/Action';
 import { CLEAR_AUTH_MESSAGES } from './components/State/Authentication/ActionType';
 
+// Toastify
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+
 function App() {
   const dispatch = useDispatch();
   const jwt = localStorage.getItem("jwt");
+const [loading, setLoading] = useState(true);
 
   const { auth } = useSelector(store => store);
 
@@ -41,11 +48,16 @@ function App() {
   };
   // User and cart fetch
   useEffect(() => {
+  const loadUser = async () => {
     if (auth.jwt || jwt) {
-      dispatch(getUser(auth.jwt || jwt));
-      dispatch(findCart(auth.jwt || jwt));
+      await dispatch(getUser(auth.jwt || jwt));
+      await dispatch(findCart(auth.jwt || jwt));
     }
-  }, [auth.jwt]);
+    setLoading(false);
+  };
+  loadUser();
+}, [auth.jwt]);
+
 
   // Load restaurants if user is owner
   useEffect(() => {
@@ -53,7 +65,7 @@ function App() {
       dispatch(getRestaurantByUserId(auth.jwt || jwt));
     }
   }, [auth.user]);
-
+if (loading) return <div>Cargando...</div>;
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
@@ -76,6 +88,10 @@ function App() {
           {snackbarMessage}
         </Alert>
       </Snackbar>
+
+      {/* Toastify container */}
+      <ToastContainer position="top-center" autoClose={3000} />
+
     </ThemeProvider>
   );
 }
