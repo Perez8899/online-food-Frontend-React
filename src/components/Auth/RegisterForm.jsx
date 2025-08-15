@@ -16,12 +16,16 @@ const initialValues = {
 
 //validation of registration fields
 const validationSchema = Yup.object({
-  fullName: Yup.string().required("Nombre es Requerido"),
+  fullName: Yup.string()
+  .trim()
+  .required("Nombre es Requerido"),
   email: Yup.string()
+   .trim()
     .email("Invalido Formato  de Email")
     .required("Email es Requerido"),
   password: Yup.string()
-           .min(6, "La Contraseña debe tener al menos 8 caracteres")
+   .trim()
+           .min(8, "La Contraseña debe tener al menos 8 caracteres")
            .required("Contraseña es Requerida"),
       role: Yup.string().required("Tipo es requerido"),
 });
