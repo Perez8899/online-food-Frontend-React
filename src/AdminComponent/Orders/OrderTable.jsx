@@ -8,12 +8,12 @@ import { updateOrderStatus } from "../../components/State/RestaurantOrder/restau
 const orderStatus = [
   { label: "Pendiente", value: "PENDIENTE" },
   { label: "Completado", value: "COMPLETADO" },
-  // { label: "Out For Delivery", value: "OUT_FOR_DELIVERY" },
+  // { label: "Out For Delivery", value: "EN CAMINO" },
   { label: "Entregado", value: "ENTREGADO" },
 ];
 
 const OrderTable = ({ isDashboard, name }) => {
-const [anchorElMap, setAnchorElMap] = useState({});
+  const [anchorElMap, setAnchorElMap] = useState({});
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ status: "", sort: "" });
   const dispatch = useDispatch();
@@ -112,7 +112,7 @@ const [anchorElMap, setAnchorElMap] = useState({});
 
                     )}
                   </TableCell>
-{/* -------------------------------------------------------------------------------                  */}
+                  {/* -------------------------------------------------------------------------------                  */}
                   {!isDashboard && <TableCell className="text-white">
                     <Chip
                       sx={{
@@ -128,8 +128,8 @@ const [anchorElMap, setAnchorElMap] = useState({});
                           : item?.orderStatus === "ENTREGADO"
                             ? "success"
                             : item?.orderStatus === "COMPLETADO"
-                              ? "info"    
-                              : "secondary" 
+                              ? "info"
+                              : "secondary"
                       }
                       className="text-white"
                     />
@@ -162,9 +162,9 @@ const [anchorElMap, setAnchorElMap] = useState({});
                       >
                         {orderStatus.map((s) => (
                           <MenuItem
-                          key={s.value}
+                            key={s.value}
                             onClick={() =>
-                              
+
                               handleUpdateOrder(item.id, s.value, index)
                             }
                           >

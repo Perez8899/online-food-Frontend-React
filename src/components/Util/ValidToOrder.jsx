@@ -1,3 +1,4 @@
+// It checks whether all items in a shopping cart belong to the same restaurant.
 export function isValid(cartItems){
     console.log("cartItems -------------- ",cartItems[0].food?.restaurant.id)
     const restaurantId=cartItems[0]?.food?.restaurant.id

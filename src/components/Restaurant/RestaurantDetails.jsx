@@ -15,10 +15,10 @@ import { getMenuItemsByRestaurantId } from '../State/Menu/Action';
 
 
   const foodTypes = [
-    {label:"All",value:"all"},
-  { label: "Vegetarian Only", value: "vegetarian" },
-  { label: "Non-Vegetarian Only", value: "non_vegetarian" },
-  {label:"Seasonal",value:"seasonal"},
+    {label:"Todo",value:"all"},
+  { label: "Vegetariana", value: "vegetarian" },
+  { label: "No-Vegetariana", value: "non_vegetarian" },
+  {label:"Temporal",value:"seasonal"},
   ];
   const menu=[1,1,1,1,1];
 
@@ -69,7 +69,7 @@ const RestaurantDetails = () => {
         <div className='px-5 lg:px-20'>
 {/*section IMAGE GRID*/}
             <section>
-                <h3 className='text-gray-500 py-2 mt-10'>Home/santarita/Zaira Restaurant fast food/3</h3>
+                {/* <h3 className='text-gray-500 py-2 mt-10'>Home/santarita/Zaira Restaurant fast food/3</h3> */}
                 <div>
                     <Grid container spacing={2}>
                         <Grid item size={12}>
@@ -168,7 +168,7 @@ const RestaurantDetails = () => {
 
 {/**Menu 80%*/}
                 <div className='lg:w-[80%] space-y-5 lg:pl-10'>
-{/** function menu* //menuItems Array para almacenar los ítems del menú --menu/Reducer*/}
+{/** function menu*  --menu/Reducer*/}
                     {menu?.menuItems.map((item) =><MenuCard item={item}/>)} {/**MenuCard.jsx */}
                 </div>
             </section>

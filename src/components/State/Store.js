@@ -24,8 +24,7 @@ const rooteReducer = combineReducers ({
     restaurantsOrder:restaurantsOrderReducer,
     ingredients:ingredientReducer,
 
-    //MEGA ADMIN
-    //add more reducers as needed
+    
 
 
 })

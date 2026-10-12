@@ -24,10 +24,6 @@ const Orders = () => {
   const searchParams = new URLSearchParams(decodedQueryString);
   const filterValue = searchParams.get("order_status");
 
-  // const [filterValue, setFilterValue] = useState();
-  // const handleFilter = (e, value) => {
-  //   setFilterValue(value);
-  // }
 useEffect(() => {
     dispatch(
       fetchRestaurantsOrder({

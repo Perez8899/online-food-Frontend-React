@@ -1,4 +1,4 @@
-// reducers.js
+
 import {
   UPDATE_ORDER_STATUS_REQUEST,
   UPDATE_ORDER_STATUS_SUCCESS,

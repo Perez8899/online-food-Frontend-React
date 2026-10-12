@@ -2,13 +2,13 @@
 import * as actionTypes from './ActionType';
 
 const initialState = {
-  menuItems: [],    // Array para almacenar los ítems del menú
-  loading: false,   // Indicador de carga
-  error: null,      // Mensaje de error si ocurre
-  search:[],        // Resultados de búsqueda
-  message:null      // Mensajes de éxito/notificaciones
+  menuItems: [],    
+  loading: false,   
+  error: null,      
+  search:[],        
+  message:null      
 };
-                    //El reductor toma el estado actual y una acción, y devuelve un nuevo estado basado en el tipo de acción.
+                    
 const menuItemReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.CREATE_MENU_ITEM_REQUEST:
@@ -58,7 +58,7 @@ const menuItemReducer = (state = initialState, action) => {
         loading: false,
         search:action.payload
       };
-                     //Casos de Falla (FAILURE)
+                     
     case actionTypes.CREATE_MENU_ITEM_FAILURE:
     case actionTypes.GET_MENU_ITEMS_BY_RESTAURANT_ID_FAILURE:
     case actionTypes.DELETE_MENU_ITEM_FAILURE:

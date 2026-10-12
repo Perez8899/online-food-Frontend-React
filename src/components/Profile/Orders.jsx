@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import OrderCard from './OrderCard'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 import { getUsersOrders } from '../State/Order/Action'
 import { Button, Dialog, DialogTitle, DialogContent, DialogActions, Typography, Divider } from '@mui/material'
 
 const Orders = () => {
-  const { auth, cart, order } = useSelector(store => store)
+  const { auth, order } = useSelector(store => store)
   const jwt = localStorage.getItem("jwt")
   const dispatch = useDispatch()
   const [showSummary, setShowSummary] = useState(false)
@@ -62,16 +61,14 @@ const Orders = () => {
       <h1 className='text-xl text-center py-7 font-semibold'>Mis Ordenes</h1>
 
       <div className='space-y-5 w-full lg:w-1/2'>
-        {order.orders.map((order, index) => 
-          order.items.map((item, itemIndex) => 
-            <OrderCard 
-              key={`${index}-${itemIndex}`}
-              status={order.orderStatus} 
-              order={item}
-            />
-          )
-        )}
-      </div>
+  {order.orders.map((orderItem, index) => (
+    <OrderCard 
+      key={orderItem.id || index}
+      status={orderItem.orderStatus} 
+      order={orderItem} // PASS the entire order, not the item
+    />
+  ))}
+</div>
 {/* Button to show summary */}
       <Button 
         variant="contained" 

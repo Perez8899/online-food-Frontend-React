@@ -122,11 +122,11 @@ const RegisterForm = () => {
       {/** Don\'t have an account? , send it to registration*/}
       <Typography variant="body2" color="textSecondary" align="center" sx={{ mt: 3 }}>
         {'Ya tienes una cuenta? '}
-        <Button>
+        {/* <Button> */}
           <Button onClick={() => navigate("/account/login")}>
             Login
           </Button>
-        </Button>
+        {/* </Button> */}
       </Typography>
     </div>
     </Container>

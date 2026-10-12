@@ -9,12 +9,12 @@ const ProtectedRoute = ({ children, requiredRole }) => {
   const [redirectPath, setRedirectPath] = useState(null);
 
   useEffect(() => {
-    // Mientras auth.user no esté definido (ni null ni objeto), no hacer nada
+// As long as auth.user is not defined (neither null nor object), do nothing
     if (typeof auth.user === 'undefined') return;
 
     const wasLoggedOut = localStorage.getItem("loggedOut");
 
-    // Esperar a que el usuario sea cargado, y solo mostrar error si NO hay jwt
+    // Wait for the user to be loaded, and only show error if there is NO jwt
     if (!auth.user) {
       const hasJwt = auth.jwt || localStorage.getItem("jwt");
 
@@ -27,7 +27,7 @@ const ProtectedRoute = ({ children, requiredRole }) => {
 
         setRedirectPath("/account/login");
       }
-      // Si tiene jwt pero aún no ha llegado el user, no mostramos el error
+      // If you have jwt but the user hasn't arrived yet, we don't show the error
     } else if (requiredRole && auth.user.role !== requiredRole) {
       toast.error("No tienes permisos para acceder a esta página.");
       setRedirectPath("/");

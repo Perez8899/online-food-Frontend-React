@@ -18,10 +18,7 @@ const AdminRouters = () => {
         <Routes>
           <Route
             path="/*"
-            //  element = {false ?  <CreaterRestaurantForm />
-            // : 
-            // <Admin />}
-            //If !restaurant.userRestaurant is true (the user does not have a registered restaurant)
+            
             element={
 
               !restaurant.usersRestaurant ? (

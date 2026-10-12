@@ -59,7 +59,7 @@ const CreateIngredientCategoryForm = ({ handleClose }) => {
       [name]: value,
     });
     
-    // Limpiar el error cuando el usuario empieza a escribir
+
     if (errors[name]) {
       setErrors({
         ...errors,

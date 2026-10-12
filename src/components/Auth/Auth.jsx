@@ -32,8 +32,6 @@ const Auth = () => {
          open={
            location.pathname === "/account/register" ||
            location.pathname === "/account/login" 
-         /*  location.pathname === "/account/reset-password-request" ||
-           location.pathname === "/account/reset-password"*/
        }>
         
            <Box sx={style}>

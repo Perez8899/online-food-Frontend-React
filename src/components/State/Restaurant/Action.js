@@ -16,23 +16,6 @@ import { GET_RESTAURANT_BY_ID_FAILURE } from "./ActionTypes";
 import { GET_RESTAURANT_BY_ID_REQUEST } from "./ActionTypes";
 import { GET_ALL_RESTAURANTS_SUCCESS } from "./ActionTypes";
 import { GET_ALL_RESTAURANTS_REQUEST } from "./ActionTypes";
-// import {
-//   createRestaurantFailure,
-//   createRestaurantRequest,
-//   createRestaurantSuccess,
-//   deleteRestaurantFailure,
-//   deleteRestaurantRequest,
-//   deleteRestaurantSuccess,
-//   getAllRestaurantsFailure,
-//   getAllRestaurantsRequest,
-//   getAllRestaurantsSuccess,
-//   getRestaurantByIdFailure,
-//   getRestaurantByIdRequest,
-//   getRestaurantByIdSuccess,
-//   updateRestaurantFailure,
-//   updateRestaurantRequest,
-//   updateRestaurantSuccess,
-// } from "./ActionCreateros";
 
 import {
   CREATE_CATEGORY_FAILURE,
@@ -319,7 +302,7 @@ export const getRestaurantsCategory = ({ jwt, restaurantId }) => {
       console.log("get restaurants category ", res.data);
       dispatch({ type: GET_RESTAURANTS_CATEGORY_SUCCESS, payload: res.data });
     } catch (error) {
-      console.log("catch error", error); //ver error
+      console.log("catch error", error); 
       dispatch({ type: GET_RESTAURANTS_CATEGORY_FAILURE, payload: error });
     }
   };

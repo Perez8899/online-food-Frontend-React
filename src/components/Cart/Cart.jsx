@@ -10,6 +10,7 @@ import { cartTotal } from './totalPay';
 import { createOrder } from '../State/Order/Action';
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import { isValid } from '../Util/ValidToOrder';
+import EditLocationAltIcon from '@mui/icons-material/EditLocationAlt';
 
 
 const style = {
@@ -40,18 +41,13 @@ const validationSchema = Yup.object().shape({
   pincode: Yup.string()
     .trim()
     .required("Codigo Postal Requerido")
-    .matches(/^\d{4}$/, "Codigo postal solo de 4"),
+    .matches(/^\d{4}$/, "Codigo postal solo de 4 digitos.Solo numeros"),
   city: Yup.string()
     .trim()
     .required("Ciudad Requerido"),
 })
 
 const Cart = () => {
-
-  //const handleOpenAddressModal = () => setOpen(true);
-  //mui modal    
-  // const [open, setOpen] = React.useState(false);
-  //const handleClose = () => setOpen(false);
 
   const createOrderUsingSelectedAddress = (item) => {
     const data = {
@@ -180,7 +176,7 @@ const Cart = () => {
 
                 {/**card add new address */}
                 <Card className='flex space-x-5 w-64 p-5'>
-                  <AddLocationAltIcon />
+                  <EditLocationAltIcon />
 
                   <div className="space-y-3 text-gray-500">
                     <h1 className="font-semibold text-lg text-white">Agregar Nueva Direccion</h1>

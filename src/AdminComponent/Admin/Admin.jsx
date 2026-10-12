@@ -9,6 +9,7 @@ import Events from '../Events/Events'
 import RestaurantDetails from './RestaurantDetails'
 import RestaurantDashboard from '../Dashboard/RestaurantDashboard'
 import AddMenuForm from '../Menu/AddMenuForm'
+import SeeReport from '../Reports/Reportes'
 import { useDispatch, useSelector } from 'react-redux'
 import { getIngredientCategory, getIngredientsOfRestaurant } from '../../components/State/Ingredients/Action'
 import { getRestaurantsCategory } from '../../components/State/Restaurant/Action'
@@ -70,6 +71,7 @@ const Admin = () => {
             <Route path='/event' element={<Events/>}/>
             <Route path='/details' element={<RestaurantDetails/>}/>
             <Route path='/add-menu' element={<AddMenuForm/>}/>
+            <Route path='/reports' element={<SeeReport/>}/>
             
           </Routes>
 

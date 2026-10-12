@@ -25,7 +25,7 @@ const navigateToRestaurant = () => {
   };                      
 
   return (
-    <Card className='m-5 w-[18rem'>
+    <Card className='m-2 w-[300px] h-[380px]'>
         <div onClick={navigateToRestaurant} className={`${data.open? 'cursor-pointer': "cursor-not-allowed"} relative`}>
             <img className='w-full h-[10rem] rounded-t-md object-cover'
                  src={data.images[0]} 
@@ -39,7 +39,7 @@ const navigateToRestaurant = () => {
             />
       
         </div>  
-        <div className='p-4 textPart lg:flex w-full justify-between'>
+        <div className='p-4 flex-grow flex flex-col'>
             <div className='space-y-1'>
                 <p className='font-semibold text-lg'>{data.name}</p>{/* restaurant name */}
                 <p className="text-gray-500 text-sm">
@@ -48,11 +48,13 @@ const navigateToRestaurant = () => {
                         : data.description} 
                 </p>
             </div>
-            <div>
-                <IconButton onClick={handleAddToFavorites}>
-                     {isPresentInFavorites(auth.favorities, data) ?<FavoriteIcon color='primary'/>:<FavoriteBorderIcon/>}
-                </IconButton>
-            </div>
+           <div className='mt-auto self-end'>
+            <IconButton onClick={handleAddToFavorites}>
+              {isPresentInFavorites(auth.favorities, data) 
+                ? <FavoriteIcon color='primary'/> 
+                : <FavoriteBorderIcon/>}
+            </IconButton>
+          </div>
         </div> 
     </Card>
   )

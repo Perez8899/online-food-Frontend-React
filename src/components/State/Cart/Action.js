@@ -1,13 +1,5 @@
 
 import { api } from "../../Config/Api";
-// import {
-//   findCartFailure,
-//   findCartRequest,
-//   findCartSuccess,
-//   getAllCartItemsFailure,
-//   getAllCartItemsRequest,
-//   getAllCartItemsSuccess,
-// } from "./ActionCreators";
 
 import { ADD_ITEM_TO_CART_FAILURE, 
     ADD_ITEM_TO_CART_REQUEST, 
@@ -30,17 +22,17 @@ import { ADD_ITEM_TO_CART_FAILURE,
 
 export const findCart = (token) => {
   return async (dispatch) => {
-    dispatch({type:FIND_CART_REQUEST});  //indica inicio de la operación
+    dispatch({type:FIND_CART_REQUEST}); //indicates start of operation
     try {
-      const response = await api.get(`/api/cart/`,{ //Hace petición GET a /api/cart/ con el token de autenticación
-        headers: {
+      const response = await api.get(`/api/cart/`,{ //Makes a GET request to /api/cart/ with the authentication token
+headers: {
             Authorization: `Bearer ${token}`,
           },
       });
       console.log("my cart",response.data)
-      dispatch({type:FIND_CART_SUCCESS, payload: response.data}); //Si éxito
+      dispatch({type:FIND_CART_SUCCESS, payload: response.data}); 
     } catch (error) { 
-      dispatch({type:FIND_CART_FAILURE, payload:error});         //Si falla
+      dispatch({type:FIND_CART_FAILURE, payload:error});       
     }
   };
 };
@@ -124,7 +116,7 @@ export const clearCartAction= () => {
     try {
       const {data} = await api.put(`/api/cart/clear`,{},{
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("jwt")}`, //Usa el JWT almacenado en localStorage
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
         },
       });
      

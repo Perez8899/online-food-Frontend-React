@@ -69,7 +69,7 @@ const validationSchema = Yup.object().shape({
   twitter: Yup.string()
   .trim()
   .test('twitter', 'URL de Twitter inválida', (value) => 
-    !value || // Si está vacío, pasa la validación
+    !value || 
     /^(https?:\/\/)?(www\.)?twitter\.com\/[A-Za-z0-9_]{1,15}$/.test(value)
   )
   .nullable(),
@@ -77,7 +77,7 @@ const validationSchema = Yup.object().shape({
 instagram: Yup.string()
   .trim()
   .test('instagram', 'URL de Instagram inválida', (value) => 
-    !value || // Si está vacío, pasa la validación
+    !value || 
     /^(https?:\/\/)?(www\.)?instagram\.com\/[A-Za-z0-9_]{1,30}$/.test(value)
   )
   .nullable(),
@@ -450,7 +450,7 @@ const CreaterRestaurantForm = () => {
         </form>
 
       </div>
-    </div> //final div
+    </div> //end div
   );
 };
 

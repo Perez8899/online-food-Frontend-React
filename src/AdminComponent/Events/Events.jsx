@@ -59,7 +59,6 @@ const Events = () => {
 
     const newErrors = { ...initialErrors };
 
-    // Validación para imagen URL
     if (!formValues.image.trim()) {
       newErrors.image = "Campo Requerido";
       isValid = false;
@@ -68,19 +67,18 @@ const Events = () => {
       isValid = false;
     }
 
-    // Validación para ubicación
     if (!formValues.location.trim()) {
       newErrors.location = "Campo Requerido";
       isValid = false;
     }
 
-    // Validación para nombre de promoción
+    // Validation for promotion name
     if (!formValues.name.trim()) {
       newErrors.name = "Campo Requerido";
       isValid = false;
     }
 
-    // Validación para fecha de inicio
+   // Validation for start date
     if (!formValues.startedAt || !dayjs(formValues.startedAt).isValid()) {
       newErrors.startedAt = "La fecha de inicio es requerida";
       isValid = false;
@@ -108,7 +106,7 @@ const Events = () => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
 
-    // Limpiar error cuando el usuario escribe
+    // Clear error when user types
     if (errors[name]) {
       setErrors({ ...errors, [name]: "" });
     }

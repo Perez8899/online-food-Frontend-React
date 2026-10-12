@@ -1,9 +1,8 @@
 /**
- * Estos action types (tipos de acción) definen las operaciones posibles que se puede
- *  realizar en el carrito de compras en la 
- * aplicación React/Redux. Cada conjunto sigue un patrón consistente de 
- * REQUEST, SUCCESS y FAILURE para manejar operaciones asíncronas.
- */
+* These action types define the possible operations that can be performed on the shopping cart in your
+* React/Redux application. Each set follows a consistent pattern of
+* REQUEST, SUCCESS, and FAILURE to handle asynchronous operations.
+*/
 export const FIND_CART_REQUEST = 'FIND_CART_REQUEST';
 export const FIND_CART_SUCCESS = 'FIND_CART_SUCCESS';
 export const FIND_CART_FAILURE = 'FIND_CART_FAILURE';

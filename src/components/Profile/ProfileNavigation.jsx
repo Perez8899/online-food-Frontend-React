@@ -17,7 +17,7 @@ const menu= [ //MENU is not a function
     {title:"Ordenes", icon:<ShoppingBagIcon  />},
     { title: "Favoritos", icon: <FavoriteIcon /> },
     { title: "Direccion", icon: <HomeIcon /> },
-    { title: "Pago", icon: <AccountBalanceWalletIcon /> },
+    // { title: "Pago", icon: <AccountBalanceWalletIcon /> },
     { title: "Notificacion", icon: <NotificationsActiveIcon /> },
     { title: "Eventos", icon: <EventIcon /> },
     { title: "Logout", icon: <LogoutIcon /> },
